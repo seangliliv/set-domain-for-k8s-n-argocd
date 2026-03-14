@@ -12,32 +12,7 @@ result: clusterissuer.cert-manager.io/letsencrypt-prod created
 
 #### 3. create kubernetes-dashboard-ingress.yml 
 ```
-apiVersion: networking.k8s.io/v1
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: dashboard-ingress
-  namespace: kubernetes-dashboard
-  annotations:
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
-spec:
-  ingressClassName: nginx
-  tls:
-  - hosts:
-    - kubernetes-dashboard.domain.com
-    secretName: dashboard-tls
-  rules:
-  - host: kubernetes-dashboard.domain.site
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: kubernetes-dashboard
-            port:
-              number: 443
+
 ```
 for apply it 
 run: kubectl apply -f dashboard-ingress.yml
@@ -52,32 +27,7 @@ run: kubectl get ingress -n kubernetes-dashboard
 run: kubectl get pods -n argocd (for check it run or not)
 #### 1. start 
 ```
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: argocd-ingress
-  namespace: argocd
-  annotations:
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
-spec:
-  ingressClassName: nginx
-  tls:
-  - hosts:
-    - argocd.domain.com
-    secretName: argocd-tls
-  rules:
-  - host: argocd.domain.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: argocd-server
-            port:
-              number: 443
+ 
 ```
 run: kubectl apply -f argocd-ingress.yml ( for apply )
 
