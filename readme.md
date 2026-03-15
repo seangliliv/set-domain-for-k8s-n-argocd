@@ -1,7 +1,7 @@
 ## Initial ingress setup 
 #### update ingress for easily approach 
 run: kubectl get svc -n kube-system ( for list service run)
-https://34.101.123.149:31001
+
 ## add domain for dashboard
 #### 1. Make sure with ingress 
 run: kubectl get pods -n ingress-nginx
