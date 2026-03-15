@@ -11,10 +11,10 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - argocd.seangliliv.site
+    - argocd.domain.com
     secretName: argocd-tls
   rules:
-  - host: argocd.seangliliv.site
+  - host: argocd.domain.com
     http:
       paths:
       - path: /

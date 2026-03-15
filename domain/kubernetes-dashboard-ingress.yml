@@ -10,10 +10,10 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - kubernetes-dashboard.seangliliv.site
+    - kubernetes-dashboard.domain.com
     secretName: dashboard-tls
   rules:
-  - host: kubernetes-dashboard.seangliliv.site
+  - host: kubernetes-dashboard.domain.com
     http:
       paths:
       - path: /
